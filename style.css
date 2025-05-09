@@ -1,0 +1,342 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.screen {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Styl dla ekranu wprowadzającego */
+#intro-screen p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Styl dla ekranu gry */
+.candidates-grid {
+    display: flex;
+    flex-wrap: wrap; /* Pozwala na zawijanie się elementów na mniejszych ekranach */
+    justify-content: center;
+    gap: 30px; /* Odstęp między kartami */
+    margin-top: 30px;
+}
+
+.candidate-card {
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px; /* Stała szerokość karty */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candidate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #e0e6e7;
+}
+
+.candidate-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #3498db; /* Ramka na zdjęciu */
+}
+
+.candidate-card h3 {
+    margin: 0;
+    color: #34495e;
+    font-size: 1.5em;
+}
+
+.progress-text {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Styl dla ekranu wyników */
+#results-screen h2 {
+    color: #2980b9;
+    margin-bottom: 30px;
+}
+
+#results-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#results-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+#results-list li:nth-child(1) { /* Złoty kolor dla pierwszego miejsca */
+    background-color: #ffebcd; /* light peach */
+    border-color: #ffd700; /* gold */
+    font-weight: bold;
+    color: #a0522d; /* sienna */
+}
+
+#results-list li:nth-child(2) { /* Srebrny kolor dla drugiego miejsca */
+    background-color: #e6e6fa; /* lavender */
+    border-color: #c0c0c0; /* silver */
+    color: #6a5acd; /* slateblue */
+}
+
+#results-list li:nth-child(3) { /* Brązowy kolor dla trzeciego miejsca */
+    background-color: #f5f5dc; /* beige */
+    border-color: #cd7f32; /* bronze */
+    color: #8b4513; /* saddlebrown */
+}
+
+
+.candidate-name {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.candidate-score {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Styl dla przycisków */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    .candidates-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .candidate-card {
+        width: 80%; /* Większa szerokość na małych ekranach */
+        max-width: 300px;
+    }
+}
+
+/* ... (istniejące style) ... */
+
+/* Styl dla przycisków */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* NOWE STYLE: Pasek postępu */
+.progress-bar-container {
+    width: 90%; /* Szerokość względem rodzica */
+    max-width: 500px; /* Maksymalna szerokość paska */
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 22px;
+    margin: 20px auto; /* Wyśrodkowanie i marginesy */
+    overflow: hidden; /* Aby zaokrąglone rogi działały poprawnie na wypełnieniu */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%; /* Początkowa szerokość 0% */
+    background-color: #27ae60; /* Zielony kolor postępu */
+    border-radius: 8px; /* Dopasuj do kontenera */
+    transition: width 0.4s ease-in-out; /* Płynne przejście szerokości */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* Responsywność */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    .candidates-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .candidate-card {
+        width: 80%; /* Większa szerokość na małych ekranach */
+        max-width: 300px;
+    }
+    .progress-bar-container {
+        height: 18px; /* Mniejsza wysokość na małych ekranach */
+    }
+    .progress-bar-fill {
+        font-size: 0.7em;
+    }
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* NOWE STYLE: Pasek postępu */
+.progress-bar-container {
+    width: 90%; /* Szerokość względem rodzica */
+    max-width: 500px; /* Maksymalna szerokość paska */
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 22px;
+    margin: 20px auto; /* Wyśrodkowanie i marginesy */
+    overflow: hidden; /* Aby zaokrąglone rogi działały poprawnie na wypełnieniu */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%; /* Początkowa szerokość 0% */
+    background-color: #27ae60; /* Zielony kolor postępu */
+    border-radius: 8px; /* Dopasuj do kontenera */
+    transition: width 0.4s ease-in-out; /* Płynne przejście szerokości */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* Responsywność */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    .candidates-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .candidate-card {
+        width: 80%; /* Większa szerokość na małych ekranach */
+        max-width: 300px;
+    }
+    .progress-bar-container {
+        height: 18px; /* Mniejsza wysokość na małych ekranach */
+    }
+    .progress-bar-fill {
+        font-size: 0.7em;
+    }
+}
+
+#results-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 12px 15px; /* Zmniejszono padding pionowy, aby lepiej pasował do obrazka */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex; /* Pozostaje flex */
+    justify-content: space-between;
+    align-items: center; /* Wyśrodkowanie elementów w pionie */
+    font-size: 1.1em; /* Zmniejszono trochę, aby zmieścić więcej */
+    gap: 10px; /* Odstęp między obrazkiem a tekstem */
+}
+
+/* ... (style dla :nth-child() pozostają bez zmian) ... */
+
+/* NOWE STYLE DLA MINIATUREK WYNIKÓW */
+.result-candidate-img {
+    width: 40px; /* Rozmiar miniaturki */
+    height: 40px;
+    border-radius: 50%; /* Okrągła miniaturka */
+    object-fit: cover; /* Aby obrazek dobrze wypełniał okrąg */
+    border: 2px solid #bdc3c7; /* Delikatna ramka */
+    flex-shrink: 0; /* Zapobiega zmniejszaniu się obrazka, gdy tekst jest długi */
+}
+
+.candidate-name {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.candidate-score {
+    font-weight: bold;
+    color: #27ae60;
+    white-space: nowrap; /* Aby "X zwycięstw" nie łamało się do nowej linii */
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wybory 2025 - Porównaj Kandydatów</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Wybory 2025: Kto jest Twoim Faworytem?</h1>
+
+    <!-- Ekran Powitalny / Instrukcje -->
+    <div id="intro-screen" class="screen">
+        <p>Witaj w symulatorze wyborczym! Wybierz swojego faworyta w każdej parze kandydatów, aby pomóc nam ustalić, kto ma największe poparcie.</p>
+        <p>Twoje kliknięcie w kartę kandydata oznacza, że to on jest Twoim wyborem w danej parze.</p>
+        <button id="start-game-btn">Rozpocznij Głosowanie</button>
+    </div>
+
+    <!-- Ekran Gry -->
+    <div id="game-screen" class="screen hidden">
+        <p class="progress-text">Porównanie <span id="current-pair-num">1</span> z <span id="total-pairs-num">X</span></p>
+
+        <!-- NOWY ELEMENT: Pasek postępu -->
+        <div class="progress-bar-container">
+            <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+
+        <div id="candidates-container" class="candidates-grid">
+            <!-- Karty kandydatów będą generowane tutaj przez JavaScript -->
+        </div>
+    </div>
+
+    <!-- Ekran Wyników -->
+    <div id="results-screen" class="screen hidden">
+        <h2>Wyniki Głosowania</h2>
+        <ul id="results-list">
+            <!-- Wyniki będą generowane tutaj przez JavaScript -->
+        </ul>
+        <button id="play-again-btn">Zagraj Ponownie</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
