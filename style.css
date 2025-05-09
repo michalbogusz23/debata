@@ -4,23 +4,23 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #1e1e1e; /* Ciemne tło strony */
     margin: 0;
-    color: #333;
+    color: #e0e0e0; /* Jasny domyślny kolor tekstu */
 }
 
 .container {
-    background-color: #fff;
+    background-color: #2c2c2c; /* Ciemniejsze tło kontenera */
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Cień dostosowany do ciemnego tła */
     text-align: center;
     max-width: 800px;
     width: 90%;
 }
 
 h1 {
-    color: #2c3e50;
+    color: #ffffff; /* Biały kolor dla głównego nagłówka */
     margin-bottom: 25px;
 }
 
@@ -37,23 +37,24 @@ h1 {
     font-size: 1.1em;
     line-height: 1.6;
     margin-bottom: 20px;
+    color: #cccccc; /* Jasnoszary tekst */
 }
 
 /* Styl dla ekranu gry */
 .candidates-grid {
     display: flex;
-    flex-wrap: wrap; /* Pozwala na zawijanie się elementów na mniejszych ekranach */
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 30px; /* Odstęp między kartami */
+    gap: 30px;
     margin-top: 30px;
 }
 
 .candidate-card {
-    background-color: #ecf0f1;
+    background-color: #3a3a3a; /* Ciemne tło karty */
     border-radius: 8px;
     padding: 20px;
-    width: 300px; /* Stała szerokość karty */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     display: flex;
@@ -63,8 +64,8 @@ h1 {
 
 .candidate-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    background-color: #e0e6e7;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    background-color: #4a4a4a; /* Lekko jaśniejsze tło karty po najechaniu */
 }
 
 .candidate-card img {
@@ -73,24 +74,51 @@ h1 {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 3px solid #3498db; /* Ramka na zdjęciu */
+    border: 3px solid #5fa8e3; /* Jaśniejszy niebieski dla ramki zdjęcia */
 }
 
 .candidate-card h3 {
     margin: 0;
-    color: #34495e;
+    color: #f0f0f0; /* Jasny kolor dla nazwy kandydata na karcie */
     font-size: 1.5em;
 }
 
 .progress-text {
     font-size: 1.1em;
     font-weight: bold;
-    color: #555;
+    color: #bbbbbb; /* Jasnoszary kolor dla tekstu postępu */
 }
+
+/* Pasek postępu */
+.progress-bar-container {
+    width: 90%;
+    max-width: 500px;
+    background-color: #444444; /* Ciemne tło kontenera paska */
+    border-radius: 8px;
+    height: 22px;
+    margin: 20px auto;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #3498db; /* Niebieski dla paska postępu (dobrze kontrastuje) */
+    border-radius: 8px;
+    transition: width 0.4s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    color: white;
+    font-weight: bold;
+}
+
 
 /* Styl dla ekranu wyników */
 #results-screen h2 {
-    color: #2980b9;
+    color: #ffffff; /* Biały kolor dla nagłówka wyników */
     margin-bottom: 30px;
 }
 
@@ -101,233 +129,46 @@ h1 {
 }
 
 #results-list li {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
+    background-color: #333333; /* Ciemne tło elementu listy */
+    border: 1px solid #555555; /* Ciemniejsza ramka */
+    padding: 12px 15px;
     margin-bottom: 10px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.2em;
-}
-
-#results-list li:nth-child(1) { /* Złoty kolor dla pierwszego miejsca */
-    background-color: #ffebcd; /* light peach */
-    border-color: #ffd700; /* gold */
-    font-weight: bold;
-    color: #a0522d; /* sienna */
-}
-
-#results-list li:nth-child(2) { /* Srebrny kolor dla drugiego miejsca */
-    background-color: #e6e6fa; /* lavender */
-    border-color: #c0c0c0; /* silver */
-    color: #6a5acd; /* slateblue */
-}
-
-#results-list li:nth-child(3) { /* Brązowy kolor dla trzeciego miejsca */
-    background-color: #f5f5dc; /* beige */
-    border-color: #cd7f32; /* bronze */
-    color: #8b4513; /* saddlebrown */
-}
-
-
-.candidate-name {
-    flex-grow: 1;
-    text-align: left;
-}
-
-.candidate-score {
-    font-weight: bold;
-    color: #27ae60;
-}
-
-/* Styl dla przycisków */
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
     font-size: 1.1em;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
+    gap: 10px;
+    color: #dddddd; /* Jasny kolor tekstu w liście */
 }
 
-button:hover {
-    background-color: #2980b9;
-}
-
-/* Responsywność */
-@media (max-width: 600px) {
-    .container {
-        padding: 20px;
-    }
-    .candidates-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .candidate-card {
-        width: 80%; /* Większa szerokość na małych ekranach */
-        max-width: 300px;
-    }
-}
-
-/* ... (istniejące style) ... */
-
-/* Styl dla przycisków */
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-/* NOWE STYLE: Pasek postępu */
-.progress-bar-container {
-    width: 90%; /* Szerokość względem rodzica */
-    max-width: 500px; /* Maksymalna szerokość paska */
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    height: 22px;
-    margin: 20px auto; /* Wyśrodkowanie i marginesy */
-    overflow: hidden; /* Aby zaokrąglone rogi działały poprawnie na wypełnieniu */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.progress-bar-fill {
-    height: 100%;
-    width: 0%; /* Początkowa szerokość 0% */
-    background-color: #27ae60; /* Zielony kolor postępu */
-    border-radius: 8px; /* Dopasuj do kontenera */
-    transition: width 0.4s ease-in-out; /* Płynne przejście szerokości */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8em;
-    color: white;
+/* Kolory dla miejsc medalowych - dostosowane do ciemnego motywu */
+#results-list li:nth-child(1) {
+    background-color: #504214; /* Ciemniejsze złoto */
+    border-color: #b8860b; /* Ciemnozłota ramka */
+    color: #fffacd; /* Jasnozłoty tekst */
     font-weight: bold;
 }
 
-
-/* Responsywność */
-@media (max-width: 600px) {
-    .container {
-        padding: 20px;
-    }
-    .candidates-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .candidate-card {
-        width: 80%; /* Większa szerokość na małych ekranach */
-        max-width: 300px;
-    }
-    .progress-bar-container {
-        height: 18px; /* Mniejsza wysokość na małych ekranach */
-    }
-    .progress-bar-fill {
-        font-size: 0.7em;
-    }
+#results-list li:nth-child(2) {
+    background-color: #46494c; /* Ciemniejsze srebro */
+    border-color: #a9a9a9; /* Ciemnoszara ramka */
+    color: #e6e6fa; /* Lawendowy tekst (jasny) */
 }
 
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
+#results-list li:nth-child(3) {
+    background-color: #4a3120; /* Ciemniejszy brąz */
+    border-color: #964b00; /* Brązowa ramka */
+    color: #f5deb3; /* Pszeniczny tekst (jasny) */
 }
 
-button:hover {
-    background-color: #2980b9;
-}
-
-/* NOWE STYLE: Pasek postępu */
-.progress-bar-container {
-    width: 90%; /* Szerokość względem rodzica */
-    max-width: 500px; /* Maksymalna szerokość paska */
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    height: 22px;
-    margin: 20px auto; /* Wyśrodkowanie i marginesy */
-    overflow: hidden; /* Aby zaokrąglone rogi działały poprawnie na wypełnieniu */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.progress-bar-fill {
-    height: 100%;
-    width: 0%; /* Początkowa szerokość 0% */
-    background-color: #27ae60; /* Zielony kolor postępu */
-    border-radius: 8px; /* Dopasuj do kontenera */
-    transition: width 0.4s ease-in-out; /* Płynne przejście szerokości */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8em;
-    color: white;
-    font-weight: bold;
-}
-
-
-/* Responsywność */
-@media (max-width: 600px) {
-    .container {
-        padding: 20px;
-    }
-    .candidates-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .candidate-card {
-        width: 80%; /* Większa szerokość na małych ekranach */
-        max-width: 300px;
-    }
-    .progress-bar-container {
-        height: 18px; /* Mniejsza wysokość na małych ekranach */
-    }
-    .progress-bar-fill {
-        font-size: 0.7em;
-    }
-}
-
-#results-list li {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 12px 15px; /* Zmniejszono padding pionowy, aby lepiej pasował do obrazka */
-    margin-bottom: 10px;
-    border-radius: 5px;
-    display: flex; /* Pozostaje flex */
-    justify-content: space-between;
-    align-items: center; /* Wyśrodkowanie elementów w pionie */
-    font-size: 1.1em; /* Zmniejszono trochę, aby zmieścić więcej */
-    gap: 10px; /* Odstęp między obrazkiem a tekstem */
-}
-
-/* ... (style dla :nth-child() pozostają bez zmian) ... */
-
-/* NOWE STYLE DLA MINIATUREK WYNIKÓW */
 .result-candidate-img {
-    width: 40px; /* Rozmiar miniaturki */
+    width: 40px;
     height: 40px;
-    border-radius: 50%; /* Okrągła miniaturka */
-    object-fit: cover; /* Aby obrazek dobrze wypełniał okrąg */
-    border: 2px solid #bdc3c7; /* Delikatna ramka */
-    flex-shrink: 0; /* Zapobiega zmniejszaniu się obrazka, gdy tekst jest długi */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #777777; /* Szara ramka dla miniaturki */
+    flex-shrink: 0;
 }
 
 .candidate-name {
@@ -337,6 +178,44 @@ button:hover {
 
 .candidate-score {
     font-weight: bold;
-    color: #27ae60;
-    white-space: nowrap; /* Aby "X zwycięstw" nie łamało się do nowej linii */
+    color: #66bb6a; /* Jaśniejszy zielony dla wyniku */
+    white-space: nowrap;
+}
+
+/* Styl dla przycisków */
+button {
+    background-color: #3498db; /* Niebieski przycisk - dobrze kontrastuje */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2980b9; /* Ciemniejszy niebieski po najechaniu */
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    .candidates-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .candidate-card {
+        width: 80%;
+        max-width: 300px;
+    }
+    .progress-bar-container {
+        height: 18px;
+    }
+    .progress-bar-fill {
+        font-size: 0.7em;
+    }
 }

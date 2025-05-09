@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         {id: "13", name: "Jakub Stanowski", image: "stanowski.png" }, // Różowy
         { id: "1", name: "Rafał Trzaskowski", image: "trzaskowski.png" }, // Fioletowy
         { id: "2", name: "Marek Woch", image: "woch.png" }, // Ciemnofioletowy
-
-        // Potencjalny kandydat niezależny lub innej formacji
         { id: "3", name: "Adrian Zandberg", image: "zandberg.png" } // Szary (przykład, można zmienić)
     ];
 
